@@ -1,1 +1,1 @@
-Third-party extensions goes here
+Directory for placing third-party extensions

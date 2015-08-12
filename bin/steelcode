@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Steelcode shell script for linux and BSD systems
+# Author : Ajay Sreedhar <ajaysreedhar468@gmail.com>
+
+if test "@php_bin@" != '@'php_bin'@'; then
+    PHP_BIN="@php_bin@"
+elif command -v php 1>/dev/null 2>/dev/null; then
+    PHP_BIN=`command -v php`
+else
+    PHP_BIN=php
+fi
+
+# Finding absolute location of current script
+SOURCE="${BASH_SOURCE[0]}"
+
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+# Check whether arguments are present
+# Three arguments must be available for steelcode shellscript to work
+if [ $# -lt 3 ]; then
+	echo "Not enough arguments supplied";
+	exit
+fi
+
+WORKINGDIR=`pwd`;
+
+ARG_ACTION=$1
+ARG_ELEMENT=$2
+ARG_NAME=$3
+
+if [ ! -v 4 ]; then
+	ARG_OPTION=$4
+else
+	ARG_OPTION=""
+fi
+
+$PHP_BIN "${DIR}/sc.php" --location="${WORKINGDIR}" --action="${ARG_ACTION}" --component="${ARG_ELEMENT}" --name="${ARG_NAME}" --parent="${ARG_OPTION}"

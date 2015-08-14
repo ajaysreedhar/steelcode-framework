@@ -63,14 +63,14 @@ class Steelcode_Domain_View extends Steelcode_Domain_View_Abstract {
 	 * View contents inside a layout file
 	 */
 	public function viewContents() {
-		if ( null === $this->_getViewPath() )
+		if ( null === $this->getViewPath() )
 			return;
 
 		/** @noinspection PhpUnusedLocalVariableInspection */
-		$path = $this->_getViewPath();
+		$path = $this->getViewPath();
 
-		$viewPath = ( file_exists( $this->_getViewPath() ) ) ?
-			$this->_getViewPath() : CONSTANT( 'INCLUDE_PATH' ) . 'includes/path-not-found.php';
+		$viewPath = ( file_exists( $this->getViewPath() ) ) ?
+			$this->getViewPath() : CONSTANT( 'INCLUDE_PATH' ) . 'includes/path-not-found.php';
 
 		/** @noinspection PhpIncludeInspection */
 		require_once( $viewPath );
@@ -80,14 +80,14 @@ class Steelcode_Domain_View extends Steelcode_Domain_View_Abstract {
 	 * Render the view
 	 */
 	public function render() {
-		if ( null === $this->_getLayoutPath() )
+		if ( null === $this->getLayoutPath() )
 			return;
 
 		/** @noinspection PhpUnusedLocalVariableInspection */
-		$path = $this->_getLayoutPath();
+		$path = $this->getLayoutPath();
 
-		$layoutPath = ( file_exists( $this->_getLayoutPath() ) ) ?
-			$this->_getLayoutPath() : CONSTANT( 'INCLUDE_PATH' ) . 'includes/path-not-found.php';
+		$layoutPath = ( Steelcode_File_Helper::exists( $this->getLayoutPath() ) ) ?
+			$this->getLayoutPath() : CONSTANT( 'INCLUDE_PATH' ) . 'includes/path-not-found.php';
 
 		/** @noinspection PhpIncludeInspection */
 		require_once( $layoutPath );

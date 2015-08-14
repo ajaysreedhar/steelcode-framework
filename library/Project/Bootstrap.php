@@ -49,14 +49,10 @@ class Steelcode_Project_Bootstrap extends Steelcode_Project_Component_Abstract {
 			"/**\n * Class Bootstrap\n */\n" );
 
 		fwrite( $this->_filePointer,
-			"class Bootstrap extends Steelcode_Application_Bootstrap " . '{' . "\n\n" );
-
-		$text = "\t/**\n\t * Class constructor\n\t */\n";
-		$text .= "\t" . "public function __construct() {\n\n\t}\n\n";
-		fwrite( $this->_filePointer, $text );
+			"class Bootstrap extends Steelcode_Application_Bootstrap_Abstract " . '{' . "\n\n" );
 
 		$text = "\t/**\n\t * Run bootstrap\n\t */\n";
-		$text .= "\t" . "public function runBootstrap() {\n\n\t}";
+		$text .= "\t" . 'public function initialize( $config )' . " {\n\n\t}";
 		fwrite( $this->_filePointer, $text );
 
 		fwrite( $this->_filePointer, "\n}\n" );
@@ -74,3 +70,4 @@ class Steelcode_Project_Bootstrap extends Steelcode_Project_Component_Abstract {
 		parent::__construct( $location );
 	}
 }
+

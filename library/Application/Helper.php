@@ -33,7 +33,7 @@ class Steelcode_Application_Helper {
 	 */
 	public static function host() {
 		$host = str_replace( '/', '', Steelcode_Server_Vars::getVar( 'HTTP_HOST' ) );
-		return ( Steelcode_SSL_Helper::isSSL() ) ? "https://{$host}" : "http://{$host}";
+		return ( Steelcode_Ssl_Helper::isSSL() ) ? "https://{$host}" : "http://{$host}";
 	}
 
 	/**

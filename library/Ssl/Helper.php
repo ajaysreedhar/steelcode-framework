@@ -27,7 +27,7 @@
  * @category Steelcode
  * @package Steelcode_SSL
  */
-abstract class Steelcode_SSL_Helper {
+abstract class Steelcode_Ssl_Helper {
 
 	/**
 	 * Check whether SSL is used

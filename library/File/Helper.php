@@ -36,4 +36,26 @@ class Steelcode_File_Helper {
 	public static function exists( $file ) {
 		return file_exists( $file );
 	}
+
+	/**
+	 * Get file size in bytes converted to GB/MB/KB
+	 *
+	 * @param int $ssize : size in bytes
+	 * @return string : file size in GB/MB/KB
+	 */
+	public static function sizeString( $ssize ) {
+		if ( $ssize >= 1000 && $ssize < 1000000 )
+			$fileSize = ( string ) round( $ssize/1000, 2 ) . " kB";
+
+		elseif ( $ssize >= 1000000 && $ssize < 10000000 )
+			$fileSize = ( string ) round( $ssize/1000000, 2 ) . " MB";
+
+		elseif ( $ssize >= 10000000 )
+			$fileSize = ( string ) round( $ssize/1000000000, 2 ) . " GB";
+
+		else
+			$fileSize = ( string ) round( $ssize ) . " Bytes";
+
+		return $fileSize;
+	}
 }

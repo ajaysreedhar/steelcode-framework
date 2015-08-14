@@ -107,7 +107,7 @@ abstract class Steelcode_Domain_Controller
 	 * @param string $domain
 	 * @param string $controller
 	 * @param array $args
-	 * 
+	 *
 	 * @return string
 	 */
 	public function url( $domain='index', $controller='index', $args=null ) {

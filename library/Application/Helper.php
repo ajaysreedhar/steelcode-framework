@@ -62,4 +62,41 @@ class Steelcode_Application_Helper {
 		}
 		return $hostUrl;
 	}
+
+	/**
+	 * Get url built from controller name and view name
+	 *
+	 * @param string $domain
+	 * @param string $controller
+	 * @param array $args
+	 *
+	 * @return string : the url
+	 */
+	public function buildUrl( $domain='index', $controller='index', array $args=null ) {
+		$url = self::url();
+		$appendArgs = '';
+
+		if ( $args !== null && is_array( $args ) ) {
+			foreach ( $args as $getKey => $getValue) {
+				if ( is_numeric( $getKey ) )
+					$getArg = "#{$getValue}";
+				else
+					$getArg = "&{$getKey}={$getValue}";
+
+				$appendArgs .= $getArg;
+			}
+
+			$appendArgs = "?{$appendArgs}";
+			$appendArgs = str_replace( '?&', '?', $appendArgs );
+		}
+
+		if ( $domain == 'index' && $controller == 'index' ) {
+			return "{$url}{$appendArgs}";
+
+		} elseif( $controller == 'index' ) {
+			return "{$url}/{$domain}/{$appendArgs}";
+		}
+
+		return "{$url}/{$domain}/{$controller}{$appendArgs}";
+	}
 }

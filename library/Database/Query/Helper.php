@@ -29,7 +29,7 @@ class Steelcode_Database_Query_Helper {
 
 	/**
 	 * Prepare column names for query
-	 * 
+	 *
 	 * @param array $columns
 	 * @return string
 	 */

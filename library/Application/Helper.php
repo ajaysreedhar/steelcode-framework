@@ -72,7 +72,7 @@ class Steelcode_Application_Helper {
 	 *
 	 * @return string : the url
 	 */
-	public function buildUrl( $domain='index', $controller='index', array $args=null ) {
+	public static function buildUrl( $domain='index', $controller='index', array $args=null ) {
 		$url = self::url();
 		$appendArgs = '';
 

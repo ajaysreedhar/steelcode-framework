@@ -38,4 +38,18 @@ class Steelcode_Json_Helper {
 	public static function encode( array $value, $options=0, $depth=512 ) {
 		return json_encode( $value, $options, $depth );
 	}
+
+	/**
+	 * Decode a json string
+	 *
+	 * @param string $string
+	 * @param bool $assoc
+	 * @param int $depth
+	 * @param int $options
+	 *
+	 * @return mixed
+	 */
+	public static function decode( $string, $assoc=false, $depth=512, $options=0 ) {
+		return json_decode( $string, $assoc, $depth, $options );
+	}
 }

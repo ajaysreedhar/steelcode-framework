@@ -86,8 +86,8 @@ class Steelcode_Application_Request {
 		if ($requestUrl == '' || $requestUrl == '/')
 			return '/';
 
-		$arrayUrl = explode('/', $requestUrl);
-		$arrayScript = explode('/', $scriptName);
+		$arrayUrl    = Steelcode_String_Helper::explode( '/', $requestUrl );
+		$arrayScript = Steelcode_String_Helper::explode( '/', $scriptName );
 
 		foreach ($arrayScript as $key => $value) {
 			if ($arrayUrl[$key] == $value) {
@@ -95,7 +95,7 @@ class Steelcode_Application_Request {
 			}
 		}
 
-		return '/' . implode('/', $arrayUrl);
+		return '/' . Steelcode_Array_Helper::implode( '/', $arrayUrl );
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Steelcode_Application_Request {
 			return;
 		}
 
-		$arrayReq = explode( '/', $requestPath );
+		$arrayReq = Steelcode_String_Helper::explode( '/', $requestPath );
 
 		if ( $arrayReq[0] == '' )
 			unset( $arrayReq[0] );

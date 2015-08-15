@@ -1,6 +1,6 @@
 <?php
 /**
- * Abstract.php - Steelcode application bootstrap abstract
+ * Bootstrap.php - Steelcode application bootstrap
  *
  * Copyright (C) 2015 Ajay Sreedhar <ajaysreedhar468@gmail.com>
  *
@@ -20,7 +20,7 @@
  */
 
 /**
- * Class Steelcode_Application_Bootstrap_Abstract
+ * Class Steelcode_Application_Bootstrap
  *
  * Abstract class must be extended by Bootstrap class
  * of steelcode applications
@@ -28,7 +28,7 @@
  * @category Steelcode
  * @package Steelcode_Application
  */
-abstract class Steelcode_Application_Bootstrap_Abstract {
+abstract class Steelcode_Application_Bootstrap {
 
 	/**
 	 * Absolute path to the application

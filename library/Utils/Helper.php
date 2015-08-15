@@ -52,56 +52,6 @@ abstract class Steelcode_Utils_Helper {
 	}
 
 	/**
-	 * Get a random string of specified length
-	 *
-	 * @param int $ssize : size of random string
-	 * @param string $expression : [optional] expression to specify character combination
-	 * 		A - all uppercase letters of English alphabet
-	 * 		a - all lowercase letters of English alphabet
-	 * 		V - all uppercase vowel letters of English alphabet - AEIOU
-	 *		v - all lowercase vowel letters of English alphabet - aeiou
-	 * 		C - all uppercase consonant letters of English alphabet
-	 *		c - all lowercase consonant letters of English alphabet
-	 *		I - integers from 0 to 9
-	 *
-	 * @return string
-	 */
-	public static function randomString( $ssize, $expression="AaI" ) {
-		$charSets = array (
-			'A' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-			'a' => 'abcdefghijklmnopqrstuvwxyz',
-			'V' => 'AEIOU',
-			'v' => 'aeiou',
-			'C' => 'BCDFGHJKLMNPQRSTVWXYZ',
-			'c' => 'bcdfghjklmnpqrstvwxyz',
-			'I' => '0123456789'
-			);
-
-		$varString = "";
-
-		if ( empty( $expression ) ) {
-			$expression = "AaI";
-		}
-
-		$expLen   = strlen( $expression );
-		$expIndex = 0;
-
-		while ( $expIndex < $expLen ) {
-			$expChar   = $expression[$expIndex];
-			$varString = str_shuffle( $charSets[$expChar] . $varString );
-
-			$expIndex++;
-		}
-
-		while ( strlen( $varString ) <= $ssize ) {
-			$varString = str_shuffle( "{$varString}{$varString}" );
-			echo strlen( $varString ) . " = {$ssize}";
-		}
-
-		return substr( $varString, 0, $ssize );
-	}
-
-	/**
 	 * Process the special characters and clean the string
 	 *
 	 * @param string $string : string to be cleaned
@@ -120,51 +70,6 @@ abstract class Steelcode_Utils_Helper {
 
 		$string2 = htmlspecialchars( $string1, ENT_QUOTES );
 		return $string2;
-	}
-
-	/**
-	 * Convert date from standard date format to string
-	 *
-	 * @param string $date
-	 * @return string
-	 */
-	public static function convertDate( $date ) {
-		$datetime = strtotime( $date );
-		return date( "F j, Y", $datetime );
-	}
-
-	/**
-	 * Format a date expression
-	 *
-	 * @param $date
-	 * @param $format
-	 * @return bool|string
-	 */
-	public static function formatDate( $date, $format ) {
-		$datetime = strtotime( $date );
-		return date( $format, $datetime );
-	}
-
-	/**
-	 * Get file size in bytes converted to GB/MB/KB
-	 *
-	 * @param int $ssize : size in bytes
-	 * @return string : file size in GB/MB/KB
-	 */
-	public static function fileSizeString( $ssize ) {
-		if ( $ssize >= 1000 && $ssize < 1000000 )
-			$fileSize = ( string ) round( $ssize/1000, 2 ) . " kB";
-
-		elseif ( $ssize >= 1000000 && $ssize < 10000000 )
-			$fileSize = ( string ) round( $ssize/1000000, 2 ) . " MB";
-
-		elseif ( $ssize >= 10000000 )
-			$fileSize = ( string ) round( $ssize/1000000000, 2 ) . " GB";
-
-		else
-			$fileSize = ( string ) round( $ssize ) . " Bytes";
-
-		return $fileSize;
 	}
 
 	/**

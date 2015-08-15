@@ -71,7 +71,7 @@ abstract class Steelcode_Domain_Controller
 
 		$this->view->renderView();
 	}
-	
+
 	/**
 	 * Redirect to another page and exit from current page
 	 *

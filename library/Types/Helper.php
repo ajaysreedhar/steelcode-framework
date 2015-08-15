@@ -36,4 +36,14 @@ class Steelcode_Types_Helper {
 	public static function isNumeric( $variable ) {
 		return is_numeric( $variable );
 	}
+
+	/**
+	 * Check whether a variable is and array
+	 *
+	 * @param mixed $variable
+	 * @return bool
+	 */
+	public static function isArray( $variable ) {
+		return is_array( $variable );
+	}
 }

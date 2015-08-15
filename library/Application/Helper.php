@@ -100,3 +100,4 @@ class Steelcode_Application_Helper {
 		return "{$url}/{$domain}/{$controller}{$appendArgs}";
 	}
 }
+

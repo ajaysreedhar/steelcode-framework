@@ -95,7 +95,7 @@ class Steelcode_Project_Handler {
 
                 case 'controller':
                     if ( !isset( $this->_config['parent'] ) ||
-                        Steelcode_Utils_Helper::isNullString( $this->_config['parent'] ) ) {
+                        Steelcode_String_Helper::isNull( $this->_config['parent'] ) ) {
 
                         throw new Steelcode_Project_Exception(
                             '* Error! Domain is not specified for creating controller' );
@@ -110,6 +110,7 @@ class Steelcode_Project_Handler {
                     break;
 
                 case 'layout':
+                    $this->_config['name'] = "layout-{$this->_config['name']}";
                     $this->_objComponent = new Steelcode_Project_Layout();
                     break;
 

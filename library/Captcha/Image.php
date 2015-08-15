@@ -390,3 +390,4 @@ class Steelcode_Captcha_Image {
         return $this->_errorText;
     }
 }
+

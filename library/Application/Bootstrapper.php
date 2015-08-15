@@ -54,7 +54,7 @@ class Steelcode_Application_Bootstrapper {
 	 * @throws Steelcode_Application_Exception
 	 */
 	public function bootstrap( $options = array() ) {
-		if ( !( $this->_bootstrap instanceof Steelcode_Application_Bootstrap_Abstract ) ) {
+		if ( !( $this->_bootstrap instanceof Steelcode_Application_Bootstrap ) ) {
 			throw new Steelcode_Application_Exception (
 				'Class Bootstrap does not extend Steelcode_Application_Bootstrap_Abstract'
 				);

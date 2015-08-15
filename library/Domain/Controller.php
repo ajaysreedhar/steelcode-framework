@@ -69,16 +69,9 @@ abstract class Steelcode_Domain_Controller
 		$this->init();
 		$this->controllerAction();
 
-		$this->viewAction();
-	}
-
-	/**
-	 * Initiate view action
-	 */
-	public function viewAction() {
 		$this->view->renderView();
 	}
-
+	
 	/**
 	 * Redirect to another page and exit from current page
 	 *

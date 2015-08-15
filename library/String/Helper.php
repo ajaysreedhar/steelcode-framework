@@ -149,5 +149,29 @@ class Steelcode_String_Helper {
 
 		return substr( $varString, 0, $ssize );
 	}
+
+	/**
+	 * Find length of a string
+	 *
+	 * @param string $string
+	 * @return int
+	 */
+	public static function length( $string ) {
+		return strlen( $string );
+	}
+
+	/**
+	 * Get length of string with respect to character encoding
+	 *
+	 * @param string $string
+	 * @return int
+	 */
+	public static function safeLength( $string ) {
+		if ( function_exists( 'mb_strlen' ) ) {
+			return mb_strlen($string, '8bit');
+		}
+
+		return self::length( $string );
+	}
 }
 

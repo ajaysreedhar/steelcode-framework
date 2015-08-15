@@ -75,7 +75,7 @@ try {
     elseif ( isset( $options['parent'] ) && $options['parent'] != false )
         $config['parent'] = $options['parent'];
 
-    if ( isset( $config['parent'] ) && Steelcode_Utils_Helper::isNullString( $config['parent'] ) )
+    if ( isset( $config['parent'] ) && Steelcode_String_Helper::isNull( $config['parent'] ) )
         unset( $config['parent'] );
 
     $project = new Steelcode_Project_Handler( $location, $config );

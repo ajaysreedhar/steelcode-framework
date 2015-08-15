@@ -28,18 +28,6 @@
 interface Steelcode_Domain_Controller_Interface {
 
 	/**
-	 * Initiate view action
-	 */
-	public function viewAction();
-
-	/**
-	 * Redirect to another page and exit from current page
-	 *
-	 * @param string $url
-	 */
-	public function redirect( $url );
-
-	/**
 	 * Function init must be defined in each controller
 	 */
 	public function init();

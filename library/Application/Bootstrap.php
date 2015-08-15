@@ -66,6 +66,6 @@ abstract class Steelcode_Application_Bootstrap {
 	 *
 	 * @param Steelcode_Application_Config $config
 	 */
-	abstract public function initialize( Steelcode_Application_Config $config=null );
+	abstract public function initialize( Steelcode_Application_Config $config );
 }
 

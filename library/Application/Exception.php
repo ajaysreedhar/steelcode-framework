@@ -25,5 +25,5 @@
  * @category Steelcode
  * @package Steelcode_Application
  */
-class Steelcode_Application_Exception extends Steelcode_Exception {}
-
+class Steelcode_Application_Exception extends Steelcode_Exception {
+}

@@ -2,7 +2,7 @@
 /**
  * Helper.php - PHP array functions implemented in methods
  *
- * Copyright (C) 2014 Ajay Sreedhar <ajaysreedhar468@gmail.com>
+ * Copyright (C) 2015 Ajay Sreedhar <ajaysreedhar468@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

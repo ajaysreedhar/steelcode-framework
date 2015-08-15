@@ -26,5 +26,4 @@
  * @package Steelcode_Captcha
  */
 class Steelcode_Captcha_Exception extends Steelcode_Exception {
-
 }

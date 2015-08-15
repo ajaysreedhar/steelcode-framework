@@ -99,5 +99,55 @@ class Steelcode_String_Helper {
 		else
 			return false;
 	}
+
+	/**
+	 * Get a random string of specified length
+	 *
+	 * @param int $ssize : size of random string
+	 * @param string $expression : [optional] expression to specify character combination
+	 * 		A - all uppercase letters of English alphabet
+	 * 		a - all lowercase letters of English alphabet
+	 * 		V - all uppercase vowel letters of English alphabet - AEIOU
+	 *		v - all lowercase vowel letters of English alphabet - aeiou
+	 * 		C - all uppercase consonant letters of English alphabet
+	 *		c - all lowercase consonant letters of English alphabet
+	 *		I - integers from 0 to 9
+	 *
+	 * @return string
+	 */
+	public static function randomString( $ssize, $expression="AaI" ) {
+		$charSets = array (
+			'A' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+			'a' => 'abcdefghijklmnopqrstuvwxyz',
+			'V' => 'AEIOU',
+			'v' => 'aeiou',
+			'C' => 'BCDFGHJKLMNPQRSTVWXYZ',
+			'c' => 'bcdfghjklmnpqrstvwxyz',
+			'I' => '0123456789'
+		);
+
+		$varString = "";
+
+		if ( empty( $expression ) ) {
+			$expression = "AaI";
+		}
+
+		$expLen   = strlen( $expression );
+		$expIndex = 0;
+
+		while ( $expIndex < $expLen ) {
+			$expChar   = $expression[$expIndex];
+			$varString = str_shuffle( $charSets[$expChar] . $varString );
+
+			$expIndex++;
+		}
+
+		while ( strlen( $varString ) <= $ssize ) {
+			$varString = str_shuffle( "{$varString}{$varString}" );
+			echo strlen( $varString ) . " = {$ssize}";
+		}
+
+		return substr( $varString, 0, $ssize );
+	}
 }
 

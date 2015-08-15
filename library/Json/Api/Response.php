@@ -104,6 +104,12 @@ class Steelcode_Json_Response {
 		$this->disableLevels( 'errors' );
 	}
 
+	public function appendData( array $data ) {
+		$this->_topLevels['data'][] = $data;
+		$this->enableLevels( 'data, included' );
+		$this->disableLevels( 'errors' );
+	}
+
 	/**
 	 * Set an error information in the top level and disable data
 	 *
@@ -136,6 +142,8 @@ class Steelcode_Json_Response {
 			$data['meta'] = $meta;
 
 		$this->_topLevels['data'][] = $data;
+		$this->enableLevels( 'data, included' );
+		$this->disableLevels( 'errors' );
 	}
 
 	/**

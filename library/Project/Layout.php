@@ -33,10 +33,10 @@ class Steelcode_Project_Layout extends Steelcode_Project_Component_Abstract {
 	 * @return bool
 	 */
 	protected function _createComponent() {
-		$layoutFile = "layout-" . strtolower( $this->_name ) . ".phtml";
+		$layoutFile = strtolower( $this->_name ) . ".phtml";
 		$this->_path = "{$this->_location}/application/layouts/{$layoutFile}";
 
-		$this->_filePointer = fopen( $this->_path, "w" );
+		$this->_filePointer = fopen( $this->_path, "x" );
 
 		$text = "<" . '?php $this->viewContents(); ?' . ">\n";
 

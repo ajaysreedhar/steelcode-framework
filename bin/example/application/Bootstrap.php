@@ -14,7 +14,7 @@ class Bootstrap extends Steelcode_Application_Bootstrap {
 	/**
 	 * Run bootstrap
 	 */
-	public function runBootstrap() {
+	public function initialize( $config ) {
 		
 	}
 }

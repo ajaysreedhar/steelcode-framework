@@ -49,7 +49,7 @@ class Steelcode_Project_Bootstrap extends Steelcode_Project_Component_Abstract {
 			"/**\n * Class Bootstrap\n */\n" );
 
 		fwrite( $this->_filePointer,
-			"class Bootstrap extends Steelcode_Application_Bootstrap_Abstract " . '{' . "\n\n" );
+			"class Bootstrap extends Steelcode_Application_Bootstrap " . '{' . "\n\n" );
 
 		$text = "\t/**\n\t * Run bootstrap\n\t */\n";
 		$text .= "\t" . 'public function initialize( $config )' . " {\n\n\t}";

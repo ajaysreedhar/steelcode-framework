@@ -37,6 +37,18 @@ class Steelcode_Date_Helper {
 	}
 
 	/**
+	 * Format local date/time
+	 *
+	 * @param string $format
+	 * @param int $timestamp
+	 *
+	 * @return string
+	 */
+	public static function date( $format, $timestamp=0 ) {
+		return date( $format, $timestamp === 0 ? time() : $timestamp );
+	}
+
+	/**
 	 * Get unix time
 	 *
 	 * @param string $time

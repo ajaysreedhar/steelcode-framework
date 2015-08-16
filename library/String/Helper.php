@@ -173,5 +173,37 @@ class Steelcode_String_Helper {
 
 		return self::length( $string );
 	}
+
+	/**
+	 * Find substring from $start to $length
+	 *
+	 * @param string $string
+	 * @param int $start
+	 * @param mixed $length
+	 *
+	 * @return string
+	 */
+	public static function safeSubString( $string, $start, $length=null ) {
+		if ( function_exists( 'mb_substr' ) ) {
+
+			if ( !isset( $length ) ) {
+				if ($start >= 0) {
+					$length = self::safeLength( $string ) - $start;
+
+				} else {
+					$length = -$start;
+				}
+			}
+
+			return mb_substr( $string, $start, $length, '8bit' );
+		}
+
+		if ( isset( $length ) ) {
+			return substr( $string, $start, $length );
+
+		} else {
+			return substr( $string, $start );
+		}
+	}
 }
 

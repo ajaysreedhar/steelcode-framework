@@ -25,7 +25,7 @@
  * @category Steelcode
  * @package Steelcode_Json
  */
-class Steelcode_Json_Response {
+class Steelcode_Json_Api_Response {
 
 	/**
 	 * Top level members

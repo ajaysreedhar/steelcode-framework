@@ -38,12 +38,22 @@ abstract class Steelcode_Application_Bootstrap {
 	private $_path = "";
 
 	/**
+	 * Application configuration object
+	 *
+	 * @var Steelcode_Application_Config
+	 */
+	private $_config;
+
+	/**
 	 * Initialize objects
 	 *
 	 * @param string $path
 	 */
 	public function __construct( $path ) {
-		$this->_path    = $path;
+		$this->_path = $path;
+
+		$request = new Steelcode_Application_Request( $this->_path );
+		$this->_config = $request->extract();
 	}
 
 	/**
@@ -53,12 +63,8 @@ abstract class Steelcode_Application_Bootstrap {
 	 * @return Stelcode_Application_Config
 	 */
 	public function bootstrap( $options=array() ) {
-		$request = new Steelcode_Application_Request( $this->_path );
-		$config  = $request->extract();
-
-		$this->initialize( $config );
-
-		return $config;
+		$this->initialize( $this->_config );
+		return $this->_config;
 	}
 
 	/**

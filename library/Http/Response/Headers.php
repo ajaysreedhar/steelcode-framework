@@ -149,7 +149,7 @@ class Steelcode_Http_Response_Headers {
 
 	public function setCookie( $name, $value, $expires=0, $path='/', $domain='' ) {
 		if ( $expires === 0 ) {
-			$expires = Steelcode_Date_Helper::formatDate( '+7 day', DateTime::ISO8601 );
+			$expires = Steelcode_Date_Helper::formatDate( '+7 day', "l, j M Y H:i:s \G\M\T" );
 		}
 
 		$cookie = "{$name}={$value};Path={$path};Expires={$expires};Secure;HttpOnly";

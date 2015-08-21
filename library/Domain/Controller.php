@@ -33,7 +33,7 @@ abstract class Steelcode_Domain_Controller
 	/**
 	 * Application configuration
 	 *
-	 * @var Steelcode_Application_Dispatcher
+	 * @var Steelcode_Application_Config
 	 */
 	private $_config;
 
@@ -54,7 +54,7 @@ abstract class Steelcode_Domain_Controller
 	/**
 	 * Initialize controller and view
 	 *
-	 * @param Steelcode_Application_Dispatcher $config
+	 * @param Steelcode_Application_Config $config
 	 */
 	public function __construct( Steelcode_Application_Config $config ) {
 		$this->_config = $config;
@@ -105,6 +105,15 @@ abstract class Steelcode_Domain_Controller
 	 */
 	public function url( $domain='index', $controller='index', $args=null ) {
 		return Steelcode_Application_Helper::buildUrl( $domain, $controller, $args );
+	}
+
+	/**
+	 * Get the application configuration object
+	 *
+	 * @return Steelcode_Application_Config
+	 */
+	public function getCongif() {
+		return $this->_config;
 	}
 
 	/**

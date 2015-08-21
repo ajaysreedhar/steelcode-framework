@@ -271,7 +271,7 @@ class Steelcode_Json_Web_Token extends Steelcode_Token_Abstract {
 	 *
 	 * @throws Steelcode_Token_Exception
 	 */
-	public function __construct( $key, $algorithm=null ) {
+	public function __construct( $key, $algorithm='HS256' ) {
 
 		if ( !empty( $algorithm ) && ! Steelcode_Array_Helper::hasKey( $algorithm, $this->_methods ) ) {
 			throw new Steelcode_Token_Exception( 'Unsupported algorithm' );

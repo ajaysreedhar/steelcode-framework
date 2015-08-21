@@ -90,7 +90,7 @@ class Steelcode_Crypto_Password {
 	public function verify( $password, $hashCode ) {
 		$this->_salt = substr( $hashCode, 0, 22 );
 
-		$hashPassword = $this->hashPassword( $password );
+		$hashPassword = $this->hash( $password );
 
 		if ( $hashPassword === $hashCode )
 			return true;

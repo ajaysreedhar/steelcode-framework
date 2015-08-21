@@ -41,7 +41,10 @@ class Steelcode_Crypto_Hash {
 	 *
 	 * @param string $salt
 	 */
-	public function __construct( $salt="" ) {
+	public function __construct( $salt=null ) {
+		if ( $salt === null )
+			$salt = Steelcode_String_Helper::randomString( 32 );
+
 		if ( 32 === Steelcode_String_Helper::safeLength( $salt ) ) {
 			$this->_salt = $salt;
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Hash.php - String hashing utilities
+ * Hash.php - String hashing and verification utilities
  *
  * Copyright (C) 2015 Ajay Sreedhar <ajaysreedhar468@gmail.com>
  *
@@ -19,93 +19,78 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-/**
- * Class Steelcode_Crypto_Hash
- *
- * String hashing utility functions
- *
- * @category Steelcode
- * @package Steelcode_Crypto
- */
 class Steelcode_Crypto_Hash {
 
 	/**
-	 * A random salt for hashing
+	 * A random salt string for hashing
 	 *
 	 * @var string
 	 */
-	private $_salt = null;
+	private $_salt = "";
 
 	/**
-	 * Loop count for hashing
+	 * Number of times to be hashed
+	 * Should be between 1 and 100000
 	 *
 	 * @var int
 	 */
-	private $_loopCount = 1000;
+	private $_loops = 1000;
 
 	/**
 	 * Class constructor
-	 */
-	public function __construct() {
-
-	}
-
-	/**
-	 * Hash a given password using BlowFish algorithm
 	 *
-	 * @param string $password
-	 * @return string
+	 * @param string $salt
 	 */
-	public function hashPassword( $password ) {
-		if ( $this->_salt === null ) {
-			$randomString = Steelcode_String_Helper::randomString( 10 );
-			$randomSalt = substr( sha1( $randomString ), 0, 22 );
+	public function __construct( $salt="" ) {
+		if ( 32 === Steelcode_String_Helper::safeLength( $salt ) ) {
+			$this->_salt = $salt;
 
 		} else {
-			$randomSalt = $this->_salt;
+			throw new Steelcode_Crypto_Exception( 'Salt should be exactly 32 characters long' );
 		}
-
-		$this->_salt = null;
-
-		$hashCount = $this->_loopCount;
-
-		$hashPassword = "{$password}{$randomSalt}";
-
-		while ( $hashCount >= 0 ) {
-			$hashPassword = sha1( sprintf( "%s%s%d", $hashPassword, $randomSalt, $hashCount ) );
-			$hashCount--;
-		}
-
-		$hashPassword = crypt( $hashPassword, '$2y$12$' . $randomSalt . '$' );
-		$hashLength = strlen( $hashPassword );
-
-		return sprintf( "%s%s", $randomSalt, substr( $hashPassword, 29, $hashLength ) );
 	}
 
 	/**
-	 * Compare a password with a given hash code
+	 * Hash a string using SHA256 algorithm
 	 *
-	 * @param string $password
-	 * @param string $hashCode
-	 * @return bool
+	 * @param string $string
+	 * @return string
 	 */
-	public function verifyPassword( $password, $hashCode ) {
-		$this->_salt = substr( $hashCode, 0, 22 );
+	public function stringHash( $string ) {
+		$key  = $this->_salt;
+		$hash = $string;
+		$loop = $this->_loops;
 
-		$hashPassword = $this->hashPassword( $password );
+		while ( $loop >= 1 ) {
+			$key  = sha1( "{$key}{$hash}" );
+			$hash = hash_hmac( 'SHA256', $hash, $key );
 
-		if ( $hashPassword === $hashCode )
-			return true;
+			$loop = $loop - 1;
+		}
 
-		return false;
+		return $hash;
 	}
 
 	/**
-	 * Set loop count for hashing
+	 * Set the loop count
 	 *
-	 * @param int $loopCount
+	 * Throws Steelcode_Crypto_Exception if loopcount is
+	 * less than 1 or greater than 100000
+	 *
+	 * @param int $loops
+	 * @throws Steelcode_Crypto_Exception
 	 */
-	public function setLoopCount( $loopCount ) {
-		$this->_loopCount = $loopCount;
+	public function setLoops( $loops ) {
+		$loops = intval( $loops );
+
+		if ( $loops > 100000 ) {
+			throw new Steelcode_Crypto_Exception( 'Higher values of loop count results in perfomance issues' );
+		}
+
+		if ( $loops < 1 ) {
+			throw new Steelcode_Crypto_Exception( 'Loop count must be atleast 1' );
+		}
+
+		$this->_loops = $loops;
 	}
 }

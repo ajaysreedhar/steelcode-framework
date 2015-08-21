@@ -161,6 +161,27 @@ class Steelcode_String_Helper {
 	}
 
 	/**
+	 * Process the special characters and clean the string
+	 *
+	 * @param string $string : string to be cleaned
+	 * @return string : processed string
+	 */
+	public static function clean( $string ) {
+		if ( Steelcode_Types_Helper::isNumeric( $string ) )
+			return $string;
+
+		if ( $string === null || $string == "" )
+			return "";
+
+		$string1 = trim( strip_tags( $string ) );
+
+		/* DEBUG $string = mysql_real_escape_string($string); */
+
+		$string2 = htmlspecialchars( $string1, ENT_QUOTES );
+		return $string2;
+	}
+
+	/**
 	 * Get length of string with respect to character encoding
 	 *
 	 * @param string $string

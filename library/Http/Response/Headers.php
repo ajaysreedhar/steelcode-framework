@@ -147,6 +147,16 @@ class Steelcode_Http_Response_Headers {
 		$this->_header['status'] = $this->_statusHeader( $status );
 	}
 
+	public function setCookie( $name, $value, $expires=0, $path='/', $domain='' ) {
+		if ( $expires === 0 ) {
+			$expires = Steelcode_Date_Helper::formatDate( '+7 day', DateTime::ISO8601 );
+		}
+
+		$cookie = "{$name}={$value};Path={$path};Expires={$expires};Secure;HttpOnly";
+
+		$this->setFields( 'Set-Cookie', $cookie );
+	}
+
 	/**
 	 * Flush the headers
 	 */

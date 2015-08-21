@@ -52,27 +52,6 @@ abstract class Steelcode_Utils_Helper {
 	}
 
 	/**
-	 * Process the special characters and clean the string
-	 *
-	 * @param string $string : string to be cleaned
-	 * @return string : processed string
-	 */
-	public static function cleanString( $string ) {
-		if ( is_numeric( $string ) )
-			return $string;
-
-		if ( $string === null || $string == "" )
-			return "";
-
-		$string1 = trim( strip_tags( $string ) );
-
-		/* DEBUG $string = mysql_real_escape_string($string); */
-
-		$string2 = htmlspecialchars( $string1, ENT_QUOTES );
-		return $string2;
-	}
-
-	/**
 	 * Check whether a string is a valid email id
 	 *
 	 * @param string $string : string to be checked

@@ -116,11 +116,50 @@ class Steelcode_Application_Config {
 	/**
 	 * Set/add a new atribute to URI options
 	 *
-	 * @param string $attr
+	 * @param string $attribute
 	 * @param string $value
 	 */
-	public function setUriAttr( $attr, $value ) {
-		$this->_uri[$attr] = $value;
+	public function setUriValue( $attribute, $value ) {
+		$this->_uri[$attribute] = $value;
+	}
+
+	/**
+	 * Set application specific options
+	 *
+	 * @param array $options
+	 */
+	public function setOptions( array $options=array() ) {
+		$this->_options = $options;
+	}
+
+	/**
+	 * Set a new application specific
+	 * attribute-value pair
+	 *
+	 * @param string $attribute
+	 * @param mixed $value
+	 */
+	public function setOptionValue( $attribute, $value ) {
+		$this->_options[$attribute] = $value;
+	}
+
+	/**
+	 * Get all options
+	 *
+	 * @return array
+	 */
+	public function getOptions() {
+		return $this->_options;
+	}
+
+	/**
+	 * Get value from options referenced by an attribute
+	 *
+	 * @param string $attribute
+	 * @return mixed
+	 */
+	public function getOptionValue( $attribute ) {
+		return $this->_options[$attribute];
 	}
 
 	/**
@@ -181,11 +220,11 @@ class Steelcode_Application_Config {
 	/**
 	 * Retrieve a specific URI option
 	 *
-	 * @param string $attr
+	 * @param string $attribute
 	 * @return string
 	 */
-	public function getUriAttr( $attr ) {
-		return $this->_uri[$attr];
+	public function getUriValue( $attribute ) {
+		return $this->_uri[$attribute];
 	}
 }
 

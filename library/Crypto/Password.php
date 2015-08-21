@@ -54,7 +54,7 @@ class Steelcode_Crypto_Password {
 	 * @param string $password
 	 * @return string
 	 */
-	public function hashPassword( $password ) {
+	public function hash( $password ) {
 		if ( $this->_salt === null ) {
 			$randomString = Steelcode_String_Helper::randomString( 10 );
 			$randomSalt = substr( sha1( $randomString ), 0, 22 );
@@ -87,7 +87,7 @@ class Steelcode_Crypto_Password {
 	 * @param string $hashCode
 	 * @return bool
 	 */
-	public function verifyPassword( $password, $hashCode ) {
+	public function verify( $password, $hashCode ) {
 		$this->_salt = substr( $hashCode, 0, 22 );
 
 		$hashPassword = $this->hashPassword( $password );

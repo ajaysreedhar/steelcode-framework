@@ -85,4 +85,20 @@ class Steelcode_Date_Helper {
 		$datetime = strtotime( $date );
 		return date( $format, $datetime );
 	}
+
+	/**
+	 * Check date of format yyyy-mm-dd is valid
+	 *
+	 * @param string $date
+	 * @return bool
+	 */
+	public static function isValidDate( $date ) {
+		$segments = Steelcode_String_Helper::explode( '-', $date );
+
+		if ( count( $segments ) != 3 ) {
+			return false;
+		}
+
+		return checkdate( $segments[1], $segments[2], $segments[0] );
+	}
 }

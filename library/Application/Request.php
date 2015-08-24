@@ -43,7 +43,7 @@ class Steelcode_Application_Request {
 		$index = 0;
 
 		foreach ( $list as $key => $value ) {
-			$this->_config->setUriAttr( $index, $value );
+			$this->_config->setUriValue( $index, $value );
 			$index++;
 		}
 	}

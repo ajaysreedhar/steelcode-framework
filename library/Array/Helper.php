@@ -28,6 +28,23 @@
 class Steelcode_Array_Helper {
 
 	/**
+	 * Push new items to array
+	 *
+	 * @param array $array
+	 * @param mixed $_
+	 */
+	public static function push( &$array ) {
+		$args = func_get_args();
+
+		foreach ( $args as $key => $value ) {
+			if ( $key === 0 )
+				continue;
+
+			array_push( $array, $value );
+		}
+	}
+
+	/**
 	 * Check whether a variable is an array or not
 	 *
 	 * @param mixed $variable
@@ -103,3 +120,4 @@ class Steelcode_Array_Helper {
 		return false;
 	}
 }
+

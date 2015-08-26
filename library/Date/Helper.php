@@ -93,6 +93,10 @@ class Steelcode_Date_Helper {
 	 * @return bool
 	 */
 	public static function isValidDate( $date ) {
+		if ( empty( $date ) ) {
+			return false;
+		}
+
 		$segments = Steelcode_String_Helper::explode( '-', $date );
 
 		if ( count( $segments ) != 3 ) {

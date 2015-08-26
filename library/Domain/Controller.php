@@ -45,28 +45,21 @@ abstract class Steelcode_Domain_Controller
 	public $view;
 
 	/**
-	 * Initialize a view
-	 */
-	private function _initView() {
-		$this->view = new Steelcode_Domain_View( $this->_config );
-	}
-
-	/**
 	 * Initialize controller and view
 	 *
 	 * @param Steelcode_Application_Config $config
 	 */
 	public function __construct( Steelcode_Application_Config $config ) {
 		$this->_config = $config;
+		$this->view = new Steelcode_Domain_View( $this->_config );
 
-		$this->_initView();
+		$this->init();
 	}
 
 	/**
 	 * Run the controller actions and view action
 	 */
 	public function runAction() {
-		$this->init();
 		$this->controllerAction();
 
 		$this->view->renderView();

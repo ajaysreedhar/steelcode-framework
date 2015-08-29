@@ -59,7 +59,7 @@ class Steelcode_Project_Controller extends Steelcode_Project_Component_Abstract 
 	 * Create the controller in the domain
 	 */
 	private function _createController() {
-		$controller = ucfirst( Steelcode_Utils_Helper::dashedToCamel( $this->_name ) );
+		$controller = ucfirst( Steelcode_String_Helper::dashedToCamel( $this->_name ) );
 		$this->_controller = "{$controller}Controller.php";
 
 		$this->_path = "{$this->_location}/application/controllers/{$this->_domain}/{$this->_controller}";
@@ -88,7 +88,7 @@ class Steelcode_Project_Controller extends Steelcode_Project_Component_Abstract 
 	 * Create the view file for the controller
 	 */
 	private function _createView() {
-		$this->_view = Steelcode_Utils_Helper::camelToDashed( $this->_name ) . ".phtml";
+		$this->_view = Steelcode_String_Helper::camelToDashed( $this->_name ) . ".phtml";
 		$this->_path = "{$this->_location}/application/views/{$this->_domain}/{$this->_view}";
 
 		$this->_filePointer = fopen( $this->_path, "w" );
@@ -146,7 +146,7 @@ class Steelcode_Project_Controller extends Steelcode_Project_Component_Abstract 
 	 * @param string $domain
 	 */
 	public function setDomain( $domain ){
-		$this->_domain = Steelcode_Utils_Helper::camelToDashed( $domain );
+		$this->_domain = Steelcode_String_Helper::camelToDashed( $domain );
 	}
 
 	/**

@@ -40,7 +40,7 @@ class Steelcode_Project_Config extends Steelcode_Project_Component_Abstract {
 	 * @return bool
 	 */
 	protected function _createComponent() {
-		$this->_config = ucfirst( Steelcode_Utils_Helper::dashedToCamel( $this->_name ) );
+		$this->_config = ucfirst( Steelcode_String_Helper::dashedToCamel( $this->_name ) );
 		$config = "{$this->_config}.php";
 
 		$this->_path = "{$this->_location}/application/configs/{$config}";

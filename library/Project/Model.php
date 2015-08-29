@@ -64,7 +64,7 @@ class Steelcode_Project_Model extends Steelcode_Project_Component_Abstract {
 	 * @return bool
 	 */
 	protected function _createComponent() {
-		$this->_model = ucfirst( Steelcode_Utils_Helper::dashedToCamel( $this->_name ) );
+		$this->_model = ucfirst( Steelcode_String_Helper::dashedToCamel( $this->_name ) );
 		$model = "{$this->_model}.php";
 
 		$this->_path = "{$this->_location}/application/models/{$model}";

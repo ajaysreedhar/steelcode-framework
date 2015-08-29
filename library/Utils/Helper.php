@@ -50,7 +50,7 @@ class Steelcode_Utils_Helper {
 	 * @param string $string
 	 * @return bool
 	 */
-	public static function isAplphabet( $string ) {
+	public static function isAlphabet( $string ) {
 		$regex = "/^[A-Za-z ]+$/";
 
 		if ( preg_match( $regex, $string ) ) {

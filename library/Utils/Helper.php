@@ -27,29 +27,7 @@
  * @category Steelcode
  * @package Steelcode_Utils
  */
-abstract class Steelcode_Utils_Helper {
-
-	/**
-	 * Convert camelCase words to hyphen separated words
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function camelToDashed( $string ) {
-		return strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $string ) );
-	}
-
-	/**
-	 * Convert hyphen separated words to camelCase words
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function dashedToCamel( $string ) {
-		return str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
-	}
+class Steelcode_Utils_Helper {
 
 	/**
 	 * Check whether a string is a valid email id

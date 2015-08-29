@@ -76,3 +76,4 @@ class Steelcode_Utils_Helper {
 		return false;
 	}
 }
+

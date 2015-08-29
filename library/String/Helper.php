@@ -28,6 +28,28 @@
 class Steelcode_String_Helper {
 
 	/**
+	 * Convert camelCase words to hyphen separated words
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function camelToDashed( $string ) {
+		return strtolower( preg_replace( '/([a-zA-Z])(?=[A-Z])/', '$1-', $string ) );
+	}
+
+	/**
+	 * Convert hyphen separated words to camelCase words
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function dashedToCamel( $string ) {
+		return str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
+	}
+
+	/**
 	 * String find and replace
 	 *
 	 * @param string $search

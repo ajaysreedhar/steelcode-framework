@@ -32,7 +32,7 @@ class Steelcode_Application_Config {
 	 *
 	 * @var string
 	 */
-	private $_path = "";
+	private $_path = '';
 
 	/**
 	 * Current domain
@@ -97,7 +97,7 @@ class Steelcode_Application_Config {
 	 * @param string $controller
 	 */
 	public function setController( $controller ) {
-		$class = ucfirst( Steelcode_Utils_Helper::dashedToCamel( $controller ) );
+		$class = ucfirst( Steelcode_String_Helper::dashedToCamel( $controller ) );
 
 		$this->_controller['name']  = $controller;
 		$this->_controller['class'] =  "Controller_{$class}";

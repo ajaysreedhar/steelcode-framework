@@ -24,8 +24,10 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Check whether arguments are present
 # Three arguments must be available for steelcode shellscript to work
+# else display help information
 if [ $# -lt 3 ]; then
-	echo "Not enough arguments supplied";
+	ARG_ACTION=$1
+	$PHP_BIN "${DIR}/sc.php ${ARG_ACTION}"
 	exit
 fi
 
@@ -42,3 +44,5 @@ else
 fi
 
 $PHP_BIN "${DIR}/sc.php" --location="${WORKINGDIR}" --action="${ARG_ACTION}" --component="${ARG_ELEMENT}" --name="${ARG_NAME}" --parent="${ARG_OPTION}"
+
+

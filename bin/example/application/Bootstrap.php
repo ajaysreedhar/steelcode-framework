@@ -5,16 +5,11 @@
 class Bootstrap extends Steelcode_Application_Bootstrap {
 
 	/**
-	 * Class constructor
-	 */
-	public function __construct() {
-		
-	}
-
-	/**
 	 * Run bootstrap
+	 * 
+	 * @param Steelcode_Application_Config $config
 	 */
-	public function initialize( $config ) {
-		
+	public function initialize( Steelcode_Application_Config $config ) {
+
 	}
 }

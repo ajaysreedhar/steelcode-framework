@@ -56,4 +56,61 @@ class Steelcode_Database_Query_Helper {
 
 		return Steelcode_Array_Helper::implode( ', ', $columns );
 	}
+
+	/**
+	 * Create filters with AND conjunction
+	 *
+	 * @param array $options
+	 * @param array $filters
+	 * @param bool $placeholder
+	 *
+	 * @return string
+	 */
+	public static function andFilter( array $options, array $filters, $placeholder=true ) {
+		$condition = "";
+
+		if ( empty( $options ) || empty( $filters ) ) {
+			return $condition;
+		}
+
+		$clause = array();
+
+		foreach ( $filters as $key => $value ) {
+			$value = ( $placeholder === true ) ? ":{$key}"
+				: ( ( Steelcode_Types_Helper::isNumeric( $value ) ) ? $value : "'{$value}'" );
+
+			$clause[] = $options[$key] . "=" . $value;
+		}
+
+		if ( !empty( $clause ) ) {
+			$condition = " WHERE " . Steelcode_Array_Helper::implode( ' AND ', $clause );
+		}
+
+		return $condition;
+	}
+
+	/**
+	 * Build column names from filter options
+	 *
+	 * @param array $columns
+	 * @return string
+	 */
+	public static function columnsAs( array $columns ) {
+		$string = "";
+		$length = count( $columns );
+
+		foreach ( $columns as $key => $value ) {
+			$length--;
+
+			if ( Steelcode_Types_Helper::isNumeric( $key ) ) {
+				$colName = "";
+			} else {
+				$colName = " AS {$key}";
+			}
+
+			$string = ( $length === 0 ) ? "{$string}{$value}{$colName}" : "{$string}{$value}{$colName}, ";
+		}
+
+		return $string;
+	}
 }

@@ -77,13 +77,25 @@ class Steelcode_Date_Helper {
 	/**
 	 * Format a date expression
 	 *
-	 * @param $date
-	 * @param $format
-	 * @return bool|string
+	 * @param string $date
+	 * @param string $format
+	 * @return string
 	 */
 	public static function formatDate( $date, $format ) {
 		$datetime = strtotime( $date );
 		return date( $format, $datetime );
+	}
+
+	/**
+	 * Format a local time to UTC time
+	 *
+	 * @param string $date
+	 * @param string $format
+	 * @return string
+	 */
+	public static function UTCDate( $date, $format ) {
+		$datetime = strtotime( $date );
+		return gmdate( $format, $datetime );
 	}
 
 	/**

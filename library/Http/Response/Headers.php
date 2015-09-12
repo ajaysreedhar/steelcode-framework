@@ -147,13 +147,26 @@ class Steelcode_Http_Response_Headers {
 		$this->_header['status'] = $this->_statusHeader( $status );
 	}
 
-	public function setCookie( $name, $value, $expires=0, $path='/', $domain='' ) {
-		if ( $expires === 0 ) {
-			$expires = Steelcode_Date_Helper::formatDate( '+7 day', "l, j M Y H:i:s \G\M\T" );
-		}
+	/**
+	 * Set a cookie
+	 *
+	 * @param string $name
+	 * @param string $value
+	 * @param bool $httpOnly
+	 * @param string $expires
+	 * @param string $path
+	 * @param string $domain
+	 */
+	public function setCookie( $name, $value, $httpOnly=true, $expires='', $path='/', $domain='' ) {
+		$expires = ( $expires === '' ) ?
+			Steelcode_Date_Helper::UTCDate( '+7 day', 'D, j M Y H:i:s e' ) :
+			Steelcode_Date_Helper::UTCDate( $expires, 'D, j M Y H:i:s e' );
 
-		$secure = Steelcode_Ssl_Helper::isSSL() ? 'Secure;' : '';
-		$cookie = "{$name}={$value};Path={$path};Expires={$expires};{$secure}";
+		$cookie = "{$name}={$value};Path={$path};Expires={$expires}";
+
+		$cookie .= ( Steelcode_String_Helper::isNull( $domain ) ? '' : ";Domain={$domain}" );
+		$cookie .= ( Steelcode_Ssl_Helper::isSSL() ? ';Secure' : '' );
+		$cookie .= ( $httpOnly ? ';HttpOnly' : '' );
 
 		$this->setFields( 'Set-Cookie', $cookie );
 	}

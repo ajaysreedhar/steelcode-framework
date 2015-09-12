@@ -168,7 +168,8 @@ class Steelcode_Http_Response_Headers {
 		$cookie .= ( Steelcode_Ssl_Helper::isSSL() ? ';Secure' : '' );
 		$cookie .= ( $httpOnly ? ';HttpOnly' : '' );
 
-		$this->setFields( 'Set-Cookie', $cookie );
+		exit($cookie);
+		//$this->setFields( 'Set-Cookie', $cookie );
 	}
 
 	/**

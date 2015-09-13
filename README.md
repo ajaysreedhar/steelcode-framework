@@ -1,7 +1,7 @@
 # Steelcode Framework 
 
 
-Steelcode is a web application framework written in PHP and follows the popular Model-View-Controller architecture.
+Steelcode is a simple, lightweight web application framework for PHP and follows the popular Model-View-Controller architecture.
 
 ### License
 Steelcode Framework is released under the GNU General Public License Version 2.

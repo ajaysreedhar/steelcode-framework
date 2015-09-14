@@ -19,13 +19,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+namespace Steelcode;
+
 /**
- * Class Steelcode_Exception
+ * Class Exception
  *
  * @category Steelcode
  * @package Steelcode_Exception
  */
-class Steelcode_Exception extends Exception {
+class Exception extends \Exception {
 
 	/**
 	 * Previous exception

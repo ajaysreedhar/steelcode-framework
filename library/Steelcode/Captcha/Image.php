@@ -19,8 +19,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+namespace Steelcode\Captcha;
+
+use Steelcode\Captcha\Exception as CaptchaException;
+
 /**
- * Class Steelcode_Captcha_Image
+ * Class Image
  *
  * Provides necessary functions to generate captcha images
  *
@@ -28,7 +32,7 @@
  * @package Steelcode_Captcha
  */
 
-class Steelcode_Captcha_Image {
+class Image {
 
     /**
      * Image blur flag
@@ -258,11 +262,11 @@ class Steelcode_Captcha_Image {
 	 * Creates a new image
 	 * 
 	 * @param string $text
-	 * @throws Steelcode_Captcha_Exception
+	 * @throws CaptchaException
 	 */
 	public function createImage( $text=null ) {
         if ( !$this->_initialize() ) {
-			throw new Steelcode_Captcha_Exception( $this->_errorText );
+			throw new CaptchaException( $this->_errorText );
 		}
 
 		$this->_captchaText = ( $text === null ) ? $this->_getRandomText() : $text;
@@ -281,7 +285,7 @@ class Steelcode_Captcha_Image {
 	/**
 	 * Output the created image
 	 *
-	 * @throws Steelcode_Captcha_Exception
+	 * @throws CaptchaException
 	 */
 	public function outputImage() {
         header( "Content-type: image/png" );

@@ -19,13 +19,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+namespace Steelcode\Application;
+
 /**
  * Class Steelcode_Application_Bootstrapper
  *
  * @category Steelcode
  * @package Steelcode_Application
  */
-class Steelcode_Application_Bootstrapper {
+class Bootstrapper {
 
 	/**
 	 * Bootstrap object

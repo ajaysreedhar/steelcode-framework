@@ -18,6 +18,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
+ 
+namespace Steelcode\Application;
 
 /**
  * Class Steelcode_Application_Bootstrap
@@ -28,7 +30,7 @@
  * @category Steelcode
  * @package Steelcode_Application
  */
-abstract class Steelcode_Application_Bootstrap {
+abstract class Bootstrap {
 
 	/**
 	 * Absolute path to the application

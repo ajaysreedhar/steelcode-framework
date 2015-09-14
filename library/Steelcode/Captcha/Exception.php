@@ -19,11 +19,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+namespace Steelcode\Captcha;
+
+use Steelcode\Exception as SteelcodeException;
+
 /**
- * Class Steelcode_Captcha_Exception
+ * Class Exception
  *
  * @category Steelcode
  * @package Steelcode_Captcha
  */
-class Steelcode_Captcha_Exception extends Steelcode_Exception {
+class Exception extends SteelcodeException {
 }

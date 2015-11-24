@@ -68,16 +68,19 @@ class Steelcode_Crypto_Password {
 		$hashCount = $this->_loopCount;
 
 		$hashPassword = "{$password}{$randomSalt}";
-
+		
 		while ( $hashCount >= 0 ) {
 			$hashPassword = sha1( sprintf( "%s%s%d", $hashPassword, $randomSalt, $hashCount ) );
 			$hashCount--;
 		}
-
+			
 		$hashPassword = crypt( $hashPassword, '$2y$12$' . $randomSalt . '$' );
+		
+		echo ( $randomString . "<br>" );
+		
 		$hashLength = strlen( $hashPassword );
 
-		return sprintf( "%s%s", $randomSalt, substr( $hashPassword, 29, $hashLength ) );
+		exit( sprintf( "%s%s", $randomSalt, substr( $hashPassword, 29, $hashLength ) ) );
 	}
 
 	/**

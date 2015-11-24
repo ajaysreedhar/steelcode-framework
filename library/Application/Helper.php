@@ -93,6 +93,9 @@ class Steelcode_Application_Helper {
 		if ( $domain == 'index' && $controller == 'index' ) {
 			return "{$url}{$appendArgs}";
 
+		} elseif( $domain === "index" && $controller != "index" ) {
+			return "{$url}/{$controller}{$appendArgs}";
+			
 		} elseif( $controller == 'index' ) {
 			return "{$url}/{$domain}/{$appendArgs}";
 		}

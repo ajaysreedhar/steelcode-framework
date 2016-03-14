@@ -86,6 +86,27 @@ class Steelcode_Array_Helper {
 	}
 
 	/**
+	 * Implode an array with the given glue string
+	 *
+	 * @param string $glue
+	 * @param array $array
+	 *
+	 * @return string
+	 */
+	public static function implodeWithKey( $glue, array $array ) {
+		$string = "";
+		$length = count( $array );
+
+		foreach ( $array as $key=>$value ) {
+			$length--;
+
+			$string = ( $length === 0 ) ? "{$string}{$key}={$value}" : "{$string}{$key}={$value}{$glue}";
+		}
+
+		return $string;
+	}
+
+	/**
 	 * Get the elements in an array indexed by integers in ascending order
 	 *
 	 * @param array $array

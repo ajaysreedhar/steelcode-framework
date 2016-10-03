@@ -19,13 +19,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+namespace Steelcode\Map;
+
 /**
- * Class Steelcode_Array_Helper
+ * Class Helper
  *
  * @category Steelcode
- * @package Steelcode_Array
+ * @package Steelcode_Map
  */
-class Steelcode_Array_Helper {
+class Helper {
 
 	/**
 	 * Push new items to array

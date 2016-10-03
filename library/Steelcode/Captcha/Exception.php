@@ -1,6 +1,6 @@
 <?php
 /**
- * Exception.php - Steelcode application exception
+ * Exception.php - Steelcode captcha exception
  *
  * Copyright (C) 2015 Ajay Sreedhar <ajaysreedhar468@gmail.com>
  *
@@ -19,11 +19,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+namespace Steelcode\Captcha;
+
+use Steelcode\Exception as SteelcodeException;
+
 /**
- * Class Steelcode_Application_Exception
+ * Class Exception
  *
  * @category Steelcode
- * @package Steelcode_Application
+ * @package Steelcode_Captcha
  */
-class Steelcode_Application_Exception extends Steelcode_Exception {
+class Exception extends SteelcodeException {
 }

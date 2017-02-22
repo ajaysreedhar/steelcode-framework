@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 
 defined( 'APPLICATION_PATH' ) || define( 'APPLICATION_PATH', ABSPATH . 'application/' );
 
-define( 'INCLUDE_PATH', 'Steelcode/' );
+define( 'INCLUDE_PATH', 'steelcode-framework/' );
 
 require_once ( INCLUDE_PATH . 'steelcode.php' );
 

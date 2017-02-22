@@ -53,7 +53,7 @@ function steelcode_autoloader( $class ) {
 
 		case 'Steelcode':
 			$class_path = implode( '/', $arr );
-			$include_path = constant( 'INCLUDE_PATH' ) . "library/{$class_path}.php";
+			$include_path = constant( 'INCLUDE_PATH' ) . "library/Steelcode/{$class_path}.php";
 			break;
 
 		case 'Controller':

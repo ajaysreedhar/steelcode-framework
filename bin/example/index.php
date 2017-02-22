@@ -9,7 +9,7 @@ defined( 'APPLICATION_PATH' ) || define( 'APPLICATION_PATH', ABSPATH . 'applicat
 
 /* Define path to the core steelcode classes
  * You may change this path if the core files are installed in some other directory */
-define( 'INCLUDE_PATH', 'Steelcode/' );
+define( 'INCLUDE_PATH', 'steelcode-framework/' );
 
 require_once ( INCLUDE_PATH . 'steelcode.php' );
 

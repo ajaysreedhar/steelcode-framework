@@ -35,6 +35,9 @@ abstract class Steelcode_Ssl_Helper {
 	 * @return bool
 	 */
 	public static function isSSL() {
+		if (defined('ALWAYS_HTTPS'))
+			return (true === constant('ALWAYS_HTTPS') ? true : false);
+		
 		if ( isset( $_SERVER['HTTPS'] ) && 'on' == strtolower( $_SERVER['HTTPS'] ) )
 			return true;
 
